@@ -1,12 +1,6 @@
 // Stylesheet
 
 .container {
-	padding: 0px 0px;
-	margin: 0px 0px;
-	font-size: 400px;
-}
-
-.container {
 	text-align: center;
 	display: flex;
 	flex-direction: column;
@@ -14,7 +8,6 @@
 	align-items: center;
 	margin-top: 20px;
 	font-family: Comic Sans MS;
-	font-size: 200px;
 }
 
 .practice {
@@ -32,4 +25,14 @@
 
 .p-container {
 	margin-left: 20px;
+}
+
+@media screen and (max-width: 770px) {
+	.container, .p-container {
+		font-size: 200%;
+	}
+	.btn {
+		font-size: 200%;
+		padding: 20px 40px;
+	}
 }
