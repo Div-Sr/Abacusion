@@ -1,0 +1,33 @@
+// Stylesheet
+
+* {
+	padding: 0px 0px;
+	margin: 0px 0px;
+}
+
+.container {
+	text-align: center;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	margin-top: 20px;
+	font-family: Comic Sans MS;
+}
+
+.practice {
+	margin-left: 20px;
+}
+
+.btn {
+	padding: 10px 30px;
+	font-family: Comic Sans MS;
+	background-color: lightgreen;
+	border: none;
+	border-radius: 10px;
+	cursor: pointer;
+}
+
+.p-container {
+	margin-left: 20px;
+}

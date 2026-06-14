@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<title>Abacus.ion</title>
+		<link rel="stylesheet" href="style.css">
+	</head>
+	<body class="body">
+		<div class="container">
+			<h1 class="heading">Result</h1>
+			<p id="total_qs"></p>
+			<p id="correct" style="background-color: lightgreen;"></p>
+			<p id="incorrect" style="background-color: red;"></p>
+			<p id="per"></p>
+			<button class="btn" onclick="restart()">Restart</button>
+		</div>
+	</body>
+	<script>
+		var total = localStorage.getItem('total');
+		var correct = localStorage.getItem('correct');
+		var percentage = String(100*Number(correct)/Number(total));
+		var incorrect = String((localStorage.getItem('total')) - Number(localStorage.getItem('correct')));
+		document.getElementById("total_qs").innerText = "Total Questions: "+total;
+		document.getElementById("correct").innerText = "Correct: "+correct;
+		document.getElementById("incorrect").innerText = "Incorrect: "+incorrect;
+		document.getElementById("per").innerText = "Percentage: "+percentage+"%";
+		
+		function restart(){
+			localStorage.clear();
+			window.location.href = "practice.html";
+		};
+	</script>
+</html>

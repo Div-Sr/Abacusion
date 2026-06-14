@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<title>Abacus.ion</title>
+		<link rel="stylesheet" href="style.css">
+	</head>
+	<body class="body">
+		<div class="container">
+			<h1 class="heading">Abacus Practice</h1>
+		</div>
+		<div class="p-container">
+			<p id="n1"></p>
+			<p id="n2"></p>
+			<p id="n3"></p>
+			<input id="inp"/>
+			<br><br><br>
+			<button class="btn" onclick="save(); putvals();">Submit & Next</button>
+			<button class="btn" onclick="save(); end();">Submit & End</button>
+		</div>
+	</body>
+	<script>
+		function onLoad(){
+			localStorage.setItem('correct', 0);
+			localStorage.setItem('total', 0);
+		};
+		onLoad()
+		function genvals(){
+			var n = [];
+			for (var j=0;j<3;j++) {
+				var x = Math.floor(Math.random()*(9 - 1 + 1)) + 1;
+				var sign = Math.random() < 0.5 ? -1 : 1;
+				n[j] = x*sign;
+			};
+			return n;
+		};
+		function putvals(){
+		var n = genvals();
+		while ((n[0] + n[1] + n[2]) < 0 || (n[0] + n[1] + n[2]) > 9 || (n[0] + n[1]) < 0 || (n[0]) < 0 || (n[0] + n[1]) > 10){
+			n = genvals();
+		}; 
+			for (i=1;i<4;i++){
+				element = document.getElementById("n"+String(i)).innerText = String(n[i-1])
+			};
+		};
+		function save(){
+			var n1 = Number(document.getElementById("n1").innerText)
+			var n2 = Number(document.getElementById("n2").innerText)
+			var n3 = Number(document.getElementById("n3").innerText)
+			var actual_ans = n1+n2+n3
+			console.log(actual_ans)
+			var ans = Number(document.getElementById("inp").value)
+			localStorage.setItem('total', String(Number(localStorage.getItem('total'))+1));
+			console.log(String(Number(localStorage.getItem('total'))+1));
+			if(ans==actual_ans) {
+				localStorage.setItem('correct', String(Number(localStorage.getItem('correct'))+1));
+			};
+			document.getElementById("inp").value = "";
+		};
+		function end(){
+			window.location.href = "result.html";
+		};
+		putvals();
+	</script>
+</html>
