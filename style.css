@@ -28,11 +28,7 @@
 }
 
 @media screen and (max-width: 770px) {
-	.container, .p-container {
-		font-size: 200%;
-	}
-	.btn {
-		font-size: 200%;
-		padding: 20px 40px;
+	.container, .p-container, .practice {
+		font-size: 110%;
 	}
 }
