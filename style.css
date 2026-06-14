@@ -15,12 +15,17 @@
 	font-family: Comic Sans MS;
 }
 
-.practice {
-	margin-left: 20px;
+.container h1 {
+	font-size: 60px;
+}
+
+.container p {
+	font-size: 20px;
 }
 
 .btn {
-	padding: 10px 30px;
+	margin-top: 20px;
+	padding: 20px 80px;
 	font-family: Comic Sans MS;
 	background-color: lightgreen;
 	border: none;
@@ -30,4 +35,13 @@
 
 .p-container {
 	margin-left: 20px;
+}
+
+.p-container p {
+	font-size: 18px;
+	font-family: Comic Sans MS;
+}
+
+#inp {
+	font-size: 32px;
 }

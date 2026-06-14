@@ -9,20 +9,22 @@
 		<div class="container">
 			<h1 class="heading">Abacus Practice</h1>
 		</div>
+		<b><p id="qno" style="font-size: 22px; margin-left: 20px; font-family: Comic Sans MS;"></p></b>
 		<div class="p-container">
-			<p id="n1"></p>
-			<p id="n2"></p>
-			<p id="n3"></p>
-			<input id="inp"/>
+			<b><p id="n1"></p></b>
+			<b><p id="n2"></p></b>
+			<b><p id="n3"></p></b>
+			<input id="inp" type="number"/>
 			<br><br><br>
 			<button class="btn" onclick="save(); putvals();">Submit & Next</button>
-			<button class="btn" onclick="save(); end();">Submit & End</button>
+			<button class="btn" onclick="end();">Submit & End</button>
 		</div>
 	</body>
 	<script>
 		function onLoad(){
 			localStorage.setItem('correct', 0);
 			localStorage.setItem('total', 0);
+			localStorage.setItem('last', 0);
 		};
 		onLoad()
 		function genvals(){
@@ -36,30 +38,39 @@
 		};
 		function putvals(){
 		var n = genvals();
-		while ((n[0] + n[1] + n[2]) < 0 || (n[0] + n[1] + n[2]) > 9 || (n[0] + n[1]) < 0 || (n[0]) < 0 || (n[0] + n[1]) > 10){
+		while ((n[0] + n[1] + n[2]) < 0 || (n[0] + n[1] + n[2]) > 10 || (n[0] + n[1]) < 0 || (n[0]) < 0 || (n[0] + n[1]) > 10){
 			n = genvals();
 		}; 
 			for (i=1;i<4;i++){
 				element = document.getElementById("n"+String(i)).innerText = String(n[i-1])
 			};
+			document.getElementById("qno").innerText = "Question "+String(Number(localStorage.getItem('total'))+1);
 		};
 		function save(){
-			var n1 = Number(document.getElementById("n1").innerText)
-			var n2 = Number(document.getElementById("n2").innerText)
-			var n3 = Number(document.getElementById("n3").innerText)
-			var actual_ans = n1+n2+n3
-			console.log(actual_ans)
-			var ans = Number(document.getElementById("inp").value)
-			localStorage.setItem('total', String(Number(localStorage.getItem('total'))+1));
-			console.log(String(Number(localStorage.getItem('total'))+1));
-			if(ans==actual_ans) {
-				localStorage.setItem('correct', String(Number(localStorage.getItem('correct'))+1));
+			if (document.getElementById("inp").value != "") {
+				console.log("saved")
+				var n1 = Number(document.getElementById("n1").innerText);
+				var n2 = Number(document.getElementById("n2").innerText);
+				var n3 = Number(document.getElementById("n3").innerText);
+				var actual_ans = n1+n2+n3;
+				var ans = Number(document.getElementById("inp").value);
+				localStorage.setItem('total', String(Number(localStorage.getItem('total'))+1));
+				if(ans==actual_ans) {
+					localStorage.setItem('correct', String(Number(localStorage.getItem('correct'))+1));
+				};
+				document.getElementById("inp").value = "";
 			};
-			document.getElementById("inp").value = "";
 		};
 		function end(){
-			window.location.href = "result.html";
+			console.log("ended")
+			window.location.assign("result.html");
 		};
+		document.getElementById("inp").addEventListener("keydown", function(event){
+			if (event.key === "Enter"){
+				save();
+				putvals();
+			};
+		});
 		putvals();
 	</script>
 </html>

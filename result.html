@@ -18,12 +18,18 @@
 	<script>
 		var total = localStorage.getItem('total');
 		var correct = localStorage.getItem('correct');
-		var percentage = String(100*Number(correct)/Number(total));
+		if (Number(total)>0){
+			var percentage = String(100*Number(correct)/Number(total));
+		}
+		else {
+			var percentage = "0";
+		};
 		var incorrect = String((localStorage.getItem('total')) - Number(localStorage.getItem('correct')));
 		document.getElementById("total_qs").innerText = "Total Questions: "+total;
 		document.getElementById("correct").innerText = "Correct: "+correct;
 		document.getElementById("incorrect").innerText = "Incorrect: "+incorrect;
 		document.getElementById("per").innerText = "Percentage: "+percentage+"%";
+
 		
 		function restart(){
 			localStorage.clear();
